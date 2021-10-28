@@ -1,0 +1,13 @@
+{
+  "name": "dejwcake/php-code-style",
+  "description": "Code style for php applications and libraries based on Slevomat Rules.",
+  "license": "MIT",
+  "require": {
+    "php": "^8.0",
+    "slevomat/coding-standard": "~7.0"
+  },
+  "config": {
+    "sort-packages": true,
+    "process-timeout": 3600
+  }
+}
