@@ -44,13 +44,17 @@
         <exclude name="SlevomatCodingStandard.Classes.SuperfluousErrorNaming" />
         <exclude name="SlevomatCodingStandard.Classes.SuperfluousTraitNaming" />
         <exclude name="SlevomatCodingStandard.Classes.DisallowConstructorPropertyPromotion" />
+        <exclude name="SlevomatCodingStandard.Classes.RequireAbstractOrFinal" />
+        <exclude name="SlevomatCodingStandard.Classes.ClassLength.ClassTooLong" />
         <exclude name="SlevomatCodingStandard.Functions.DisallowArrowFunction" />
         <exclude name="SlevomatCodingStandard.Functions.FunctionLength" />
         <exclude name="SlevomatCodingStandard.Functions.DisallowTrailingCommaInCall" />
         <exclude name="SlevomatCodingStandard.Functions.DisallowTrailingCommaInDeclaration.DisallowedTrailingComma" />
         <exclude name="SlevomatCodingStandard.Functions.DisallowNamedArguments" />
         <exclude name="SlevomatCodingStandard.Files.FunctionLength.FunctionLength" />
+        <exclude name="SlevomatCodingStandard.Files.FileLength.FileTooLong" />
         <exclude name="SlevomatCodingStandard.Numbers.RequireNumericLiteralSeparator" />
+        <exclude name="SlevomatCodingStandard.Exceptions.DisallowNonCapturingCatch.DisallowedNonCapturingCatch" />
     </rule>
 
     <!-- For test, do not need traversable type hints -->
@@ -168,6 +172,7 @@
                 <element value="public constants"/>
                 <element value="protected constants"/>
                 <element value="private constants"/>
+                <element value="enum cases"/>
 
                 <!-- You don't care about the order among the properties. The same can be done with "properties" shortcut -->
                 <element value="public static properties"/>
@@ -186,7 +191,9 @@
                 <element value="protected static abstract methods"/>
 
                 <element value="public static methods"/>
+                <element value="public static final methods"/>
                 <element value="protected static methods"/>
+                <element value="protected static final methods"/>
                 <element value="private static methods"/>
 
                 <element value="magic methods"/>
@@ -195,7 +202,9 @@
                 <element value="protected abstract methods"/>
 
                 <element value="public methods"/>
+                <element value="public final methods"/>
                 <element value="protected methods"/>
+                <element value="protected final methods"/>
                 <element value="private methods"/>
             </property>
         </properties>
@@ -205,6 +214,21 @@
     <rule ref="SlevomatCodingStandard.Whitespaces.DuplicateSpaces">
         <properties>
             <property name="ignoreSpacesInAnnotation" value="true"/>
+        </properties>
+    </rule>
+
+    <!-- Do not allow trailing comma in closure use only if single line -->
+    <rule ref="SlevomatCodingStandard.Functions.DisallowTrailingCommaInClosureUse">
+        <properties>
+            <property name="onlySingleLine" value="true"/>
+        </properties>
+    </rule>
+
+    <!-- Use higher value for max cognitive complexity -->
+    <rule ref="SlevomatCodingStandard.Complexity.Cognitive">
+        <properties>
+            <!-- TODO: LOWER THIS VALUE TO DEFAULT VALUE 5 -->
+            <property name="maxComplexity" value="10"/>
         </properties>
     </rule>
 
@@ -223,7 +247,7 @@
         <exclude-pattern>tests/*</exclude-pattern>
     </rule>
 
-    <!-- Some classes extends from framework and use public properties -->
+    <!-- Some classes extend from framework and use public properties -->
     <rule ref="SlevomatCodingStandard.Classes.ForbiddenPublicProperty.ForbiddenPublicProperty">
         <exclude-pattern>app/Models/*</exclude-pattern>
     </rule>
