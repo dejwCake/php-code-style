@@ -27,6 +27,8 @@
         <exclude name="SlevomatCodingStandard.Namespaces.ReferenceUsedNamesOnly" />
         <exclude name="SlevomatCodingStandard.Namespaces.FullyQualifiedExceptions" />
         <exclude name="SlevomatCodingStandard.TypeHints.DisallowArrayTypeHintSyntax" />
+        <!-- Deprecated since 8.16.0, removed in 9.0.0; DNFTypeHintFormat (auto-active) replaces it -->
+        <exclude name="SlevomatCodingStandard.TypeHints.UnionTypeHintFormat" />
         <exclude name="SlevomatCodingStandard.TypeHints.ParameterTypeHint.MissingTraversableTypeHintSpecification" />
         <exclude name="SlevomatCodingStandard.TypeHints.ReturnTypeHint.MissingTraversableTypeHintSpecification" />
         <exclude name="SlevomatCodingStandard.ControlStructures.BlockControlStructureSpacing.IncorrectLinesCountAfterControlStructure" />
@@ -55,6 +57,8 @@
         <exclude name="SlevomatCodingStandard.Files.FileLength.FileTooLong" />
         <exclude name="SlevomatCodingStandard.Numbers.RequireNumericLiteralSeparator" />
         <exclude name="SlevomatCodingStandard.Exceptions.DisallowNonCapturingCatch.DisallowedNonCapturingCatch" />
+        <!-- Catch order is semantically significant (inheritance hierarchy), do not enforce alphabetical order -->
+        <exclude name="SlevomatCodingStandard.Exceptions.CatchExceptionsOrder" />
         <exclude name="SlevomatCodingStandard.Arrays.AlphabeticallySortedByKeys.IncorrectKeyOrder" />
     </rule>
 
